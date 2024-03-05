@@ -28,27 +28,29 @@ export default function FactViewer() {
         setLanguage(e.target.value);
     };
   return (
-    <div>
-            <h2>Random Fact Viewer</h2>
-            <select value={language} onChange={handleLanguageChange}>
-                <option value="en">English</option>
-                <option value="de">German</option>
-            </select>
-            <button onClick={() => fetchFact('today')}>Fact of the Day</button>
-            <button onClick={() => fetchFact('random')}>Random Fact</button>
+    <div className="fact-viewer">
+    <h2>Random Fact Viewer</h2>
+    <select value={language} onChange={handleLanguageChange} className="factLanguage">
+        <option value="en">English</option>
+        <option value="de">German</option>
+    </select>
 
-            {fact && (
-                <div>
-                    <h3>Fact Details</h3>
-                    <p>ID: {fact.id}</p>
-                    <p>Text: {fact.text}</p>
-                    <p>Source: {fact.source}</p>
-                    <p>Source URL: <a href={fact.source_url}>{fact.source_url}</a></p>
-                    <p>Language: {fact.language}</p>
-                    <p>Permalink: <a href={fact.permalink}>{fact.permalink}</a></p>
-                </div>
-            )}
+    <div className="button-container">
+        <button onClick={() => fetchFact('today')}>Fact of the Day</button>
+        <button onClick={() => fetchFact('random')}>Random Fact</button>
+    </div>
+
+    {fact && (
+        <div className="fact-card">
+            <h3>Fact Details</h3>
+            <div className="fact-details">
+                <p>Text: {fact.text}</p>
+                <p>Source URL: <a href={fact.source_url}>{fact.source_url}</a></p>
+                <p>Language: {fact.language}</p>
+            </div>
         </div>
+    )}
+</div>
   )
 }
 export const useClient = true;
