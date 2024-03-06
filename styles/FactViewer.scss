@@ -37,7 +37,7 @@ body {
   padding: 20px;
   background-color: #f9f9f9;
   width: 50%;
-  height: 24vh;
+  height: 28vh;
   position: relative; 
   @media (max-width: 768px) {
     border: 1px solid #ccc;
@@ -48,11 +48,10 @@ body {
     width: 90%;
     height: 20vh;
 }
-
 }
 
 .fact-card h3 {
-  margin-bottom: 40px;
+  margin-bottom: 20px;
   text-align: center;
   @media (max-width: 768px) {
     margin-bottom: 20px;
@@ -93,13 +92,8 @@ body {
   &:hover {
     background-color: rgb(10, 162, 152);
   }
+  @media (max-width: 768px) {
+    width: 50%;
+}
 }
 
-.fact-details a {
-  color: #007bff;
-  text-decoration: none;
-}
-
-.fact-details a:hover {
-  text-decoration: underline;
-}

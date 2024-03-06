@@ -1,0 +1,68 @@
+.basket-Header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    border-bottom: 2px solid #ccc; 
+}
+.close-button{
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    background: none;
+    font-size: large;
+}
+.basket-card {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    height: 95vh;
+    background-color: #f5f5f5;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow-y: auto;
+  
+    h3 {
+        font-size: 1.2rem;
+        margin-bottom: 10px;
+    }
+  
+    .item-added {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+  
+        .item-added-container {
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+  
+            p {
+                margin-bottom: 5px;
+            }
+        }
+    }
+
+    .basket-Save {
+        position: fixed;
+        bottom: 0;
+        width: 20%;
+        background-color: #f5f5f5;
+        padding: 10px;
+        border: 1px solid #dddcdc;
+  
+        .basket-Save-Btn {
+            border: none;
+            border-radius: 5px;
+            width: 100%;
+            color: #fff;
+            cursor: pointer;
+            padding: 10px;
+            background-color: rgb(59, 180, 172);
+  
+            &:hover {
+                background-color: rgb(10, 162, 152);
+            }
+        }
+    }
+}

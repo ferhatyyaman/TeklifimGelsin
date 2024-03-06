@@ -2,11 +2,14 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import "../../styles/FactViewer.scss"
+import BasketCard from './BasketCard';
 
 
 export default function FactViewer() {
     const [fact, setFact] = useState(null);
     const [language, setLanguage] = useState('en');
+    const [basketItems, setBasketItems] = useState([]);
+    const [isBasketOpen, setIsBasketOpen] = useState(false);
 
     const fetchFact = async (mode) => {
         let url = '';
@@ -26,6 +29,22 @@ export default function FactViewer() {
 
     const handleLanguageChange = (e) => {
         setLanguage(e.target.value);
+    };
+    const toggleBasket = () => {
+        setIsBasketOpen(!isBasketOpen);
+    };
+    const addToBasket = () => {
+        if (fact) {
+            setBasketItems([...basketItems, fact]);
+            setIsBasketOpen(true); 
+        }
+    };
+
+    
+    const removeFromBasket = (index) => {
+        const newBasketItems = [...basketItems];
+        newBasketItems.splice(index, 1);
+        setBasketItems(newBasketItems);
     };
   return (
     <div className="fact-viewer">
@@ -48,13 +67,13 @@ export default function FactViewer() {
               <p>{fact.text}</p>
               </div>
                 <div className="fact-details-link">
-                <button className="basket-button">
-                        Add to Basket
-                </button>
+                <button onClick={addToBasket} className="basket-button">Add to Basket</button>
+                           
                 </div>
             </div>
         </div>
     )}
+      {isBasketOpen && <BasketCard basketItems={basketItems} onClose={toggleBasket} onRemove={removeFromBasket}/>}
 </div>
   )
 }
