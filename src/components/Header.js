@@ -14,12 +14,17 @@ export default function Header() {
         <ul>
             <li>
                 <Link href="/Card">
-                    Card
+                <img src="/cart.png" alt="Basket" width="24" height="24" /> Card
                 </Link>
             </li>
             <li>
                 <Link href="/">
-                    Login
+                    Favorite
+                </Link>
+            </li>
+            <li>
+                <Link href="/">
+                    Exit
                 </Link>
             </li>
         </ul>

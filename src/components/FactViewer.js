@@ -36,17 +36,22 @@ export default function FactViewer() {
     </select>
 
     <div className="button-container">
-        <button onClick={() => fetchFact('today')}>Fact of the Day</button>
-        <button onClick={() => fetchFact('random')}>Random Fact</button>
+        <button onClick={() => fetchFact('today')} className="submitButton">Fact of the Day</button>
+        <button onClick={() => fetchFact('random')} className="submitButton">Random Fact</button>
     </div>
 
     {fact && (
         <div className="fact-card">
             <h3>Fact Details</h3>
             <div className="fact-details">
-                <p>Text: {fact.text}</p>
-                <p>Source URL: <a href={fact.source_url}>{fact.source_url}</a></p>
-                <p>Language: {fact.language}</p>
+              <div className="fact-details-text">
+              <p>{fact.text}</p>
+              </div>
+                <div className="fact-details-link">
+                <button className="basket-button">
+                        Add to Basket
+                </button>
+                </div>
             </div>
         </div>
     )}
