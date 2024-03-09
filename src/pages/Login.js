@@ -1,13 +1,14 @@
 import React from 'react'
 import LoginForm from '@/components/LoginForm';
+import ReduxProvider from '@/redux/app/provider';
 
-export default function Login({ history }) {
-    const handleLogin = (userData) => {
-        history.push('/factviewer');
-      };
+export default function Login() {
+    
   return (
     <div>
-    <LoginForm onLogin={handleLogin} />
+    <ReduxProvider>
+    <LoginForm />
+    </ReduxProvider>
   </div>
   )
 }
