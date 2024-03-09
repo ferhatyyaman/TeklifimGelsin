@@ -12,14 +12,10 @@ export default function Header() {
     </div>
     <nav className="nav">
         <ul>
+            
             <li>
-                <Link href="/Card">
-                <img src="/cart.png" alt="Basket" width="24" height="24" /> Card
-                </Link>
-            </li>
-            <li>
-                <Link href="/">
-                    Favorite
+                <Link href="/Save">
+                    Saved
                 </Link>
             </li>
             <li>

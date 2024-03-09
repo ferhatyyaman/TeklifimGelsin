@@ -1,0 +1,59 @@
+body {
+    background-image: url('../public/mbg.png');
+    background-size: cover;
+    background-attachment: fixed;
+  }
+.card-save {
+    padding: 20px;
+    margin-top: 20px;
+    margin-right: 100px; 
+    margin-left: 100px;
+    
+
+    .saved-items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        align-items: center;
+        justify-content: center;
+        min-width: 550px;
+        
+    }
+    .saved-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+        height: 20vh;
+        padding: 10px 15px 0 15px;
+        margin: 10px;
+        background-color: #f9f9f9;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        min-width: 500px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        p {
+            font-size: 1rem;
+            margin: 15px;
+        }
+
+        button {
+           margin-top:auto;
+           margin-bottom: 10px;
+           border: none;
+           border-radius: 5px;
+           width: 40%;
+           color: #fff;
+           cursor: pointer;
+           padding: 10px;
+           bottom: 10px; 
+           min-width: 150px;
+
+           background-color: rgb(59,180,172);
+           &:hover {
+             background-color: rgb(10, 162, 152);
+           }
+    }
+    }
+}

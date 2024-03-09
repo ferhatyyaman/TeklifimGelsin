@@ -1,9 +1,26 @@
 import React from 'react'
-import { useState, useEffect } from 'react';
 import "../../styles/BasketCard.scss"
+import { useDispatch, useSelector } from 'react-redux';
+import {removeItem } from '../redux/features/basketSlice';
+import { addSavedItem } from '../redux/features/savedItemsSlice';
+import { useRouter } from 'next/navigation'
 
-export default function BasketCard({ basketItems, onClose, onRemove }) {
 
+
+export default function BasketCard({onClose}) {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const { items: basketItems } = useSelector(state => state.basket);
+
+  const handleRemoveFromBasket = (item) => {
+      dispatch(removeItem(item));
+  };
+  const handleSave = () => {
+    basketItems.forEach(item => {
+      dispatch(addSavedItem(item));
+      router.push('/Save');
+    });
+  };
   return (
     <div className="basket-card">
             <div className="basket-Header">
@@ -17,7 +34,7 @@ export default function BasketCard({ basketItems, onClose, onRemove }) {
                     {basketItems.map((item, index) => (
                         <div key={index} className="item-added-container">
                             <p>{item.text}</p>
-                            <button onClick={() => onRemove(index)}>Remove</button>
+                            <button onClick={() => handleRemoveFromBasket(item)}>Remove</button>
                         </div>
                     ))}
                     
@@ -27,7 +44,7 @@ export default function BasketCard({ basketItems, onClose, onRemove }) {
             )}
 
             <div className="basket-Save">
-            <button className="basket-Save-Btn">Save</button>
+            <button className="basket-Save-Btn" onClick={handleSave}>Save</button>
             </div>
         </div>
   )

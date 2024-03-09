@@ -1,6 +1,7 @@
 body {
   background-image: url('../public/bg.png');
   background-size: cover;
+  background-attachment: fixed;
 }
 .div-container{
   text-align: center;
@@ -26,6 +27,7 @@ body {
     height: 50vh;
     max-width: 500px;
     margin: 100px auto; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   h2 {
@@ -44,13 +46,14 @@ body {
   }
   
   .submitButton {
-    width: 60%;
+    width: 64%;
     padding: 10px;
     border: none;
     border-radius: 5px;
     background-color: #007bff;
     color: #fff;
     cursor: pointer;
+    min-width: 200px;
   
     &:hover {
       background-color: #0056b3;

@@ -1,13 +1,26 @@
 body {
   background-image: url('../public/mbg.png');
   background-size: cover;
+  background-attachment: fixed;
 }
 .fact-viewer {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-width: 800px;
+  min-height: 600px;
 }
-
+.factLanguage {
+  padding: 10px 20px 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  outline: none;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  min-width: 100px;
+}
 .button-container {
   display: flex;
   flex-direction: row;
@@ -38,25 +51,15 @@ body {
   background-color: #f9f9f9;
   width: 50%;
   height: 28vh;
-  position: relative; 
-  @media (max-width: 768px) {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-top: 50px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    width: 90%;
-    height: 20vh;
-}
+  position: relative;
+  min-width: 400px;
+  min-height: 200px;
 }
 
 .fact-card h3 {
   margin-bottom: 20px;
   text-align: center;
-  @media (max-width: 768px) {
-    margin-bottom: 20px;
-    text-align: center;
-}
+
 }
 
 .fact-details {
@@ -66,12 +69,11 @@ body {
 .fact-details p {
   margin-bottom: 5px;
   margin: 5px;
+  
 }
 .fact-details-text{
   font-size: 1.5rem;
-  @media (max-width: 768px) {
-    font-size: 1.0rem;
-}
+  
 }
 .fact-details-link{
   display: flex;
@@ -88,12 +90,11 @@ body {
   position: absolute; 
   padding: 10px;
   bottom: 10px; 
+  min-width: 150px;
   background-color: rgb(59,180,172);
   &:hover {
     background-color: rgb(10, 162, 152);
   }
-  @media (max-width: 768px) {
-    width: 50%;
-}
+
 }
 

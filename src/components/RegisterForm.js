@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import  '../../styles/RegisterForm.scss'
+import Link from 'next/link';
 
 export default function RegisterForm({ onRegister }) {
     const [username, setUsername] = useState('');
@@ -20,6 +21,7 @@ export default function RegisterForm({ onRegister }) {
       <input type="text" placeholder="Username" value={username} onChange={(e) => setUsername(e.target.value)} className="inputField"/>
       <input type="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} className="inputField"/>
       <button type="submit" className="submitButton">Register</button>
+      <Link href="/" className="linkContainer">Login</Link> 
     </form>
   </div>
   );

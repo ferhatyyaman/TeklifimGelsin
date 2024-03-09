@@ -1,63 +1,53 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
-import axios from 'axios';
 import "../../styles/FactViewer.scss"
+import { useDispatch, useSelector } from 'react-redux';
 import BasketCard from './BasketCard';
+import { fetchFact, setLanguage } from '../redux/features/factSlice';
+import { addItem } from '../redux/features/basketSlice';
+
 
 
 export default function FactViewer() {
-    const [fact, setFact] = useState(null);
-    const [language, setLanguage] = useState('en');
-    const [basketItems, setBasketItems] = useState([]);
     const [isBasketOpen, setIsBasketOpen] = useState(false);
+    const { items: basketItems } = useSelector(state => state.basket);
 
-    const fetchFact = async (mode) => {
-        let url = '';
-        if (mode === 'today') {
-            url = `https://uselessfacts.jsph.pl/api/v2/facts/today?language=${language}`;
-        } else if (mode === 'random') {
-            url = `https://uselessfacts.jsph.pl/api/v2/facts/random?language=${language}`;
-        }
-
-        try {
-            const response = await axios.get(url);
-            setFact(response.data);
-        } catch (error) {
-            console.error('Error fetching fact:', error);
-        }
-    };
+    const { fact, language} = useSelector(state => state.fact);
+    const dispatch = useDispatch();
 
     const handleLanguageChange = (e) => {
-        setLanguage(e.target.value);
+        dispatch(setLanguage(e.target.value));
     };
-    const toggleBasket = () => {
-        setIsBasketOpen(!isBasketOpen);
-    };
+    const handleClose = () => {
+        setIsBasketOpen(false);
+      };
+
     const addToBasket = () => {
         if (fact) {
-            setBasketItems([...basketItems, fact]);
-            setIsBasketOpen(true); 
+            const isAlreadyAdded = basketItems.some(item => item.id === fact.id);
+            if (isAlreadyAdded) {
+                alert("This fact is already added to the basket");
+            } else {
+                dispatch(addItem(fact));
+                setIsBasketOpen(true);
+            }
         }
     };
-
-    
-    const removeFromBasket = (index) => {
-        const newBasketItems = [...basketItems];
-        newBasketItems.splice(index, 1);
-        setBasketItems(newBasketItems);
-    };
+    console.log("Fact:", fact);
+    console.log("Language:", language);
+   
   return (
     <div className="fact-viewer">
     <h2>Random Fact Viewer</h2>
     <select value={language} onChange={handleLanguageChange} className="factLanguage">
-        <option value="en">English</option>
+        <option value="en" >English</option>
         <option value="de">German</option>
     </select>
 
     <div className="button-container">
-        <button onClick={() => fetchFact('today')} className="submitButton">Fact of the Day</button>
-        <button onClick={() => fetchFact('random')} className="submitButton">Random Fact</button>
-    </div>
+                <button onClick={() => dispatch(fetchFact('today'))} className="submitButton">Fact of the Day</button>
+                <button onClick={() => dispatch(fetchFact('random'))} className="submitButton">Random Fact</button>
+            </div>
 
     {fact && (
         <div className="fact-card">
@@ -73,7 +63,8 @@ export default function FactViewer() {
             </div>
         </div>
     )}
-      {isBasketOpen && <BasketCard basketItems={basketItems} onClose={toggleBasket} onRemove={removeFromBasket}/>}
+      {isBasketOpen && <BasketCard onClose={handleClose} />}
+   
 </div>
   )
 }
