@@ -5,11 +5,14 @@ import React from 'react'
 
 export default function Save() {
   return (
-    <div>
-       <ReduxProvider>
-          <Header/>
-          <CardSave/>
-       </ReduxProvider>
-    </div>
+    <> 
+    <ReduxProvider>
+      <div>
+        <Header/>
+        <CardSave/>
+      </div>
+    </ReduxProvider>
+ </>
+      
   )
 }
