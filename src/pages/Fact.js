@@ -3,7 +3,7 @@ import Header from '@/components/Header'
 import ReduxProvider from '@/redux/app/provider'
 import React from 'react'
 
-export default function Fact({ history }) {
+export default function Fact() {
   return (
     <ReduxProvider>
       <div>

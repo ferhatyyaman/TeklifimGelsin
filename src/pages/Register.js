@@ -1,13 +1,14 @@
 import React from 'react'
 import RegisterForm from '@/components/RegisterForm';
+import ReduxProvider from '@/redux/app/provider';
 
-export default function Register({ history }) {
-    const handleRegister = (userData) => {
-        history.push('/Login');
-      };
+export default function Register() {
+    
   return (
     <div>
-    <RegisterForm onRegister={handleRegister} />
+    <ReduxProvider>
+    <RegisterForm/>
+    </ReduxProvider>
   </div>
   )
 }

@@ -33,8 +33,6 @@ export default function FactViewer() {
             }
         }
     };
-    console.log("Fact:", fact);
-    console.log("Language:", language);
    
   return (
     <div className="fact-viewer">

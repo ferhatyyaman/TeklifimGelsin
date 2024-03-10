@@ -1,29 +1,23 @@
 import React, { useState } from 'react';
 import Link from 'next/link';
 import "../../styles/LoginForm.scss"
-import { useDispatch } from 'react-redux';
-import { authenticateUser } from '@/redux/features/authSlice';
-import { loginUser } from '@/redux/features/userSlice';
 import { useRouter } from 'next/navigation'
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../redux/features/userSlice';
 
 export default function LoginForm() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const dispatch = useDispatch();
-  
     const router = useRouter();
 
+    
     const handleFormSubmit = (e) => {
-      console.log("basıldı")
       e.preventDefault();
-      if (username === 'admin' && password === '12345') {
-        dispatch(loginUser({ username }));
-        dispatch(authenticateUser());
-        router.push('/Fact');
-      } else {
-        alert('Invalid username or password');
-      }
-    };
+      dispatch(loginUser({ username, password }));
+      router.push('/Fact');
+  };
+    
   
   return (
  <div className="div-container">

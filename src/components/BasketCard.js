@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect} from 'react'
 import "../../styles/BasketCard.scss"
 import { useDispatch, useSelector } from 'react-redux';
 import {removeItem } from '../redux/features/basketSlice';
@@ -11,16 +11,26 @@ export default function BasketCard({onClose}) {
   const dispatch = useDispatch();
   const router = useRouter();
   const { items: basketItems } = useSelector(state => state.basket);
+  
+  const { items: savedItems } = useSelector(state => state.savedItems);
 
   const handleRemoveFromBasket = (item) => {
       dispatch(removeItem(item));
   };
   const handleSave = () => {
-    basketItems.forEach(item => {
-      dispatch(addSavedItem(item));
-      router.push('/Save');
+    const savedItemIds = new Set(savedItems.map(item => item.id));
+
+    const itemsToAdd = basketItems.filter(item => !savedItemIds.has(item.id)); 
+
+    itemsToAdd.forEach(item => {
+        dispatch(addSavedItem(item));
     });
-  };
+
+    router.push('/Save');
+};
+
+
+ 
   return (
     <div className="basket-card">
             <div className="basket-Header">
