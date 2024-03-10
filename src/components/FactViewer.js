@@ -33,10 +33,14 @@ export default function FactViewer() {
             }
         }
     };
+
+    useEffect(() => {
+        dispatch(fetchFact('today'));
+    }, []);
    
   return (
     <div className="fact-viewer">
-    <h2>Random Fact Viewer</h2>
+    <h2>Fact Viewer</h2>
     <select value={language} onChange={handleLanguageChange} className="factLanguage">
         <option value="en" >English</option>
         <option value="de">German</option>
@@ -49,7 +53,6 @@ export default function FactViewer() {
 
     {fact && (
         <div className="fact-card">
-            <h3>Fact Details</h3>
             <div className="fact-details">
               <div className="fact-details-text">
               <p>{fact.text}</p>

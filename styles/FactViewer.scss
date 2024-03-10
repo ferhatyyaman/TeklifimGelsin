@@ -51,7 +51,6 @@ body {
   background-color: #f9f9f9;
   width: 50%;
   height: 28vh;
-  position: relative;
   min-width: 400px;
   min-height: 200px;
 }
@@ -63,16 +62,28 @@ body {
 }
 
 .fact-details {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
   text-align: center;
+  min-height: 200px;
+  
+  padding: 10px;
+  button{
+    margin-top: auto;
+    
+  }
+  p {
+    margin-bottom: 5px;
+    margin: 5px;
+    
+  }
 }
 
-.fact-details p {
-  margin-bottom: 5px;
-  margin: 5px;
-  
-}
+
 .fact-details-text{
   font-size: 1.5rem;
+  
   
 }
 .fact-details-link{
@@ -87,10 +98,10 @@ body {
   width: 20%;
   color: #fff;
   cursor: pointer;
-  position: absolute; 
   padding: 10px;
   bottom: 10px; 
   min-width: 150px;
+  
   background-color: rgb(59,180,172);
   &:hover {
     background-color: rgb(10, 162, 152);
